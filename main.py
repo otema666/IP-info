@@ -3,6 +3,9 @@ import pprint
 from colorama import init, Fore, Style
 import requests
 import os
+import webbrowser
+
+
 
 # Inicializar colorama
 init()
@@ -100,7 +103,7 @@ except:
     timezone = "No encontrada"
 
 if loc != "No encontrada":
-    url_maps = f'https://google.com/maps/{loc}'
+    url_maps = f'https://google.com/maps/place/{loc}'
 else:
     url_maps = "No disponible"
 
@@ -150,3 +153,33 @@ if all_info:
 
 print()
 espacio()
+print()
+
+while True:
+    print(f'Quieres abrir algún enlace? ({Fore.GREEN}s{Fore.RESET}/{Fore.RED}n{Fore.RESET}) --> ', end="")
+    r = str(input()).lower()
+    if r == "s":
+        print(f'{Fore.GREEN}    1. {Fore.LIGHTWHITE_EX}Google Maps')
+        print(f'{Fore.GREEN}    2. {Fore.LIGHTWHITE_EX }Whatismyipaddress')
+        print(f'{Fore.GREEN}    3. {Fore.LIGHTWHITE_EX}Todo{Fore.RESET}')
+        print()
+        print(f'Respuesta: {Fore.BLUE}', end="")
+        nav = int(input())
+        print(Fore.RESET)
+        if nav == 1:
+            webbrowser.open(url_maps)
+            exit()
+        elif nav == 2:
+            webbrowser.open(url_IP)
+            exit()
+        elif nav == 3:
+            webbrowser.open(url_maps)
+            webbrowser.open(url_IP)
+            exit()
+        else:
+            print(f'{Fore.RESET}Respuesta no válida')
+            print()
+    elif r == "n":
+        exit()
+    else:
+        print("Respuesta no válida")
