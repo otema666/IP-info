@@ -1,25 +1,27 @@
-# IP-info
+# IP-info by otema xaxax 🌐
 
-## Output:
+#
 
-#### Información básica:
+<h2 align="center"> ----------------------------------------------- Output: -----------------------------------------------</h2>
+
+### Información básica: ℹ️
 * Hostname:    
 * Organización:
 
-#### Geolocalización:
+### Seguridad: 🛡️
+* VPN checker
+* Proxy checker
+* Tor node checker
+* Relay checker
+
+### Geolocalización: 📍
 * País:        
 * Región:      
 * Ciudad:      
 * CP:          
 * Zona Horaria:
-* Google Maps: 
+* Google Maps (link): 
 
 
-#### Otros servicios:
+### Otros servicios:
 * Enlace a whatismyipaddress:
-
-
-## Próximo:
-* VPN checker
-* Proxy checker
-* Tor node checker
