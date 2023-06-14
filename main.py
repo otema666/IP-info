@@ -4,7 +4,6 @@ from colorama import init, Fore, Style
 import requests
 import os
 
-
 # Inicializar colorama
 init()
 
@@ -53,14 +52,6 @@ else:
     pass
 
 details = handler.getDetails(IP)
-
-
-
-
-
-
-
-
 
 # Vars
 try:
@@ -114,8 +105,8 @@ else:
     url_maps = "No disponible"
 
 url_IP = f'https://whatismyipaddress.com/ip/{IP}'
-# List
 
+# List
 all = []
 
 all.append(hostname)
@@ -126,13 +117,6 @@ all.append(loc)
 all.append(org)
 all.append(postal)
 all.append(timezone)
-
-
-
-
-
-
-
 
 # OUTPUT
 os.system('cls')
@@ -166,36 +150,3 @@ if all_info:
 
 print()
 espacio()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-
-# Print list all
-a = 0
-for elemento in all:
-    a += 1
-    print(a," ",  elemento)
-
-
-
-hueco()
-try:
-    
-   
-except:
-    print(details.all)
-
-'''
