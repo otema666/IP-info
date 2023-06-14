@@ -17,3 +17,9 @@
 
 #### Otros servicios:
 * Enlace a whatismyipaddress:
+
+
+## Próximo:
+* VPN checker
+* Proxy checker
+* Tor node checker
