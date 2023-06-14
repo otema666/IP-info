@@ -33,6 +33,52 @@ def obtener_direccion_ip():
     except:
         return False
 
+def verificar_vpn(ip):
+    api_key = "f0b7f18a3e7541149ae064d21b443589"
+    url = f"https://vpnapi.io/api/{ip}?key={api_key}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        vpn_status = data['security']['vpn']
+        return vpn_status
+    except:
+        return False  # No se está utilizando una VPN
+
+def verificar_proxy(ip):
+    api_key = "f0b7f18a3e7541149ae064d21b443589"
+    url = f"https://vpnapi.io/api/{ip}?key={api_key}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        proxy_status = data['security']['proxy']
+        return proxy_status
+    except:
+        return False  # No se está utilizando un proxy
+
+def verificar_tor(ip):
+    api_key = "f0b7f18a3e7541149ae064d21b443589"
+    url = f"https://vpnapi.io/api/{ip}?key={api_key}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        tor_status = data['security']['tor']
+        return tor_status
+    except:
+        return False  # No se está utilizando un tor node
+
+def verificar_relay(ip):
+    api_key = "f0b7f18a3e7541149ae064d21b443589"
+    url = f"https://vpnapi.io/api/{ip}?key={api_key}"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        relay_status = data['security']['relay']
+        return relay_status
+    except:
+        return False  # No se está utilizando un relay de apple
+
+
+
 
 access_token = '13e422b8b69e59'
 handler = ipinfo.getHandler(access_token)
@@ -57,6 +103,11 @@ else:
 details = handler.getDetails(IP)
 
 # Vars
+VPN = verificar_vpn(IP)
+proxy = verificar_proxy(IP)
+tor = verificar_tor(IP)
+relay = verificar_relay(IP)
+
 try:
     ALL = details.all
 except:
@@ -124,13 +175,41 @@ all.append(timezone)
 # OUTPUT
 os.system('cls')
 espacio()
-print(f'                                               Información de {Fore.RED}{IP}{Fore.RESET}.')
+print(f'                                               {Fore.LIGHTWHITE_EX}Información de {Fore.RED}{IP}{Fore.LIGHTWHITE_EX}.{Fore.RESET}')
 espacio()
 print(" ")
+
+print()
+
+
 print(f'{Fore.CYAN}Información básica:')
 print()
 print(f'{Fore.YELLOW}Hostname:     {Fore.GREEN}{hostname}')
 print(f'{Fore.YELLOW}Organización: {Fore.GREEN}{org}')
+print()
+print(f'{Fore.CYAN}Seguridad:')
+print()
+if VPN:
+    print(f'{Fore.YELLOW}VPN:          {Fore.GREEN}{VPN}')
+else:
+    print(f'{Fore.YELLOW}VPN:          {Fore.RED}{VPN}')
+
+if proxy:
+    print(f'{Fore.YELLOW}Proxy:        {Fore.GREEN}{proxy}')
+else:
+    print(f'{Fore.YELLOW}Proxy:        {Fore.RED}{proxy}')
+
+if tor:
+    print(f'{Fore.YELLOW}Tor:          {Fore.GREEN}{tor}')
+else:
+    print(f'{Fore.YELLOW}Tor:          {Fore.RED}{tor}')
+
+if relay:
+    print(f'{Fore.YELLOW}Relay:        {Fore.GREEN}{relay}')
+else:
+    print(f'{Fore.YELLOW}Relay:        {Fore.RED}{relay}')
+
+
 print()
 print(f'{Fore.CYAN}Geolocalización:')
 print()
