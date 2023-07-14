@@ -5,8 +5,6 @@ import requests
 import os
 import webbrowser
 
-
-
 # Inicializar colorama
 init()
 
@@ -173,7 +171,7 @@ all.append(postal)
 all.append(timezone)
 
 # OUTPUT
-os.system('cls')
+os.system('cls' if os.name == 'nt' else 'clear')
 espacio()
 print(f'                                               {Fore.LIGHTWHITE_EX}Información de {Fore.RED}{IP}{Fore.LIGHTWHITE_EX}.{Fore.RESET}')
 espacio()
