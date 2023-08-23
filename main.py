@@ -75,6 +75,12 @@ def verificar_relay(ip):
     except:
         return False  # No se está utilizando un relay de apple
 
+def create_log():
+    folder_name = "logs"
+
+    if not os.path.exists(folder_name):
+        os.mkdir(folder_name)
+
 
 
 
@@ -233,8 +239,7 @@ espacio()
 print()
 
 while True:
-    # Generate HTML content
-
+    create_log()
     html_content = f"""
     <!DOCTYPE html>
     <html>
