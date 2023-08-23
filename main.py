@@ -233,6 +233,89 @@ espacio()
 print()
 
 while True:
+    # Generate HTML content
+
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>IP Information</title>
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+                background-color: #222;
+                color: #ddd;
+                margin: 0;
+                padding: 0;
+            }}
+            .container {{
+                display: flex;
+                justify-content: center;
+                margin: 90px;
+            }}
+            .info {{
+                width: 40%;
+            }}
+            h1 {{
+                color: #ffc107;
+                text-align: center;
+            }}
+            h2 {{
+                color: #f44336;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
+                margin-top: 20px;
+            }}
+            p {{
+                margin: 5px 0;
+            }}
+            .link {{
+                color: #2196f3;
+                text-decoration: underline;
+                cursor: pointer;
+            }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="info">
+                <h1>IP Information for <span style="color: green"> {IP} </span></h1>
+                <h2>Basic Information:</h2>
+                <p>Hostname: {hostname}</p>
+                <p>Organization: {org}</p>
+                <!-- Include other basic information here -->
+
+                <h2>Security Information:</h2>
+                <p>VPN: <span style="color: {'green' if VPN else 'red'}">{'Yes' if VPN else 'No'}</span></p>
+                <p>Proxy: <span style="color: {'green' if proxy else 'red'}">{'Yes' if proxy else 'No'}</span></p>
+                <p>Tor: <span style="color: {'green' if tor else 'red'}">{'Yes' if tor else 'No'}</span></p>
+                <p>Relay: <span style="color: {'green' if relay else 'red'}">{'Yes' if relay else 'No'}</span></p>
+                <!-- Include other security information here -->
+
+                <h2>Geolocation Information:</h2>
+                <p>Country: {country}</p>
+                <p>Region: {region}</p>
+                <p>City: {city}</p>
+                <p>Postal Code: {postal}</p>
+                <p>Timezone: {timezone}</p>
+                <!-- Include other geolocation information here -->
+
+                <h2>Links:</h2>
+                <p class="link"><a href="{url_maps}" target="_blank">Google Maps</a></p>
+                <p class="link"><a href="{url_IP}" target="_blank">WhatIsMyIPAddress</a></p>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+
+    # Save HTML content to a file
+    output_file_path = f"logs/{IP}.html"
+    with open(output_file_path, "w") as html_file:
+        html_file.write(html_content)
+
+    print(f"{Fore.GREEN}HTML log saved in: {Fore.BLUE}{output_file_path}{Fore.GREEN}!{Fore.RESET}")
+
     print(f'Quieres abrir algún enlace? ({Fore.GREEN}s{Fore.RESET}/{Fore.RED}n{Fore.RESET}) --> ', end="")
     r = str(input()).lower()
     if r == "s":
